@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
 
@@ -27,6 +28,8 @@ public class FirstFragment extends Fragment {
     private String mParam2;
 
     Button btnRecipe, btnGame, btnDogam, btnToast;
+    // 테스트를위한 이미지뷰를 버튼으로
+    ImageView imgTest;
 
     public FirstFragment() {
         // Required empty public constructor
@@ -69,6 +72,15 @@ public class FirstFragment extends Fragment {
         btnDogam = view.findViewById(R.id.btnDogam);
         btnToast = view.findViewById(R.id.btnMyToast);
         // Inflate the layout for this fragment
+        // 테스트를위한 이미지뷰를 버튼으로
+        imgTest = view.findViewById(R.id.imgTest);
+        imgTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), RegisterInfoActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnRecipe.setOnClickListener(new View.OnClickListener() {
             @Override

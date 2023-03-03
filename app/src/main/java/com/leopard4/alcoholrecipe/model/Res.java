@@ -11,4 +11,8 @@ public class Res {
     public void setResult(String result) {
         this.result = result;
     }
+
+    public boolean isSuccess() {
+        return "success".equals(result);
+    }
 }

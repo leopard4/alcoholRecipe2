@@ -19,5 +19,7 @@ public interface UserApi extends Serializable {
     @POST("/user/login")
     Call<UserRes> login(@Body User user);
 
-
+    // todo :이메일 중복체크 api 없음
+    @POST("/user/checkEmail")
+    Call<UserRes> checkEmail(String email);
 }

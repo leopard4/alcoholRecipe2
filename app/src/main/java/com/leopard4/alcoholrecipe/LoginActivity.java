@@ -1,11 +1,13 @@
 package com.leopard4.alcoholrecipe;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -43,6 +45,19 @@ public class LoginActivity extends AppCompatActivity {
         editPassword = findViewById(R.id.editPassword);
         btnLogin = findViewById(R.id.btnOk);
         txtRegister = findViewById(R.id.txtRegister);
+
+        // 1.다른곳을 클릭하면 키패드를 내리기위해 (3단계)
+        // 현재의 뷰를 먼저 연결해준다
+        View view = this.getCurrentFocus();
+        // 2.레이아웃 부분을 클릭하면
+        findViewById(R.id.LoginLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 3.키패드를 내린다
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(editEmail.getWindowToken(), 0);
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
